@@ -1,0 +1,196 @@
+import random
+
+# Danh sách câu hỏi, lựa chọn và đáp án đúng
+questions = [
+    {"question": "Câu 1. Trong các thế kỷ XVI – XIX, phong trào đấu tranh chống thực dân xâm lược bùng nổ sớm ở những quốc gia Đông Nam Á nào sau đây?",
+     "options": ["A. In-đô-nê-xi-a và Miến Điện", "B. In-đô-nê-xi-a và Phi-líp-pin", "C. Việt Nam và Lào", "D. Mã Lai và Phi-líp-pin"],
+     "answer": "B"},
+    {"question": "Câu 2. Từ thế kỉ XVI đến thế kỉ XIX, nhân dân In-đô-nê-xi-a đấu tranh chống lại nước thực dân nào sau đây?",
+     "options": ["A. Hà Lan", "B. Tây Ban Nha", "C. Anh", "D. Pháp"],
+     "answer": "A"},
+    {"question": "Câu 3. Từ giữa thế kỷ XVI đến cuối thế kỷ XIX, nhân dân Phi-líp-pin đấu tranh chống lại nước thực dân nào sau đây?",
+     "options": ["A. Tây Ban Nha", "B. Bồ Đào Nha", "C. Mĩ", "D. Hà Lan"],
+     "answer": "A"},
+    {"question": "Câu 4. Cuộc khởi nghĩa nào kéo dài nhất trong cuộc đấu tranh chống thực dân Tây Ban Nha của nhân dân Phi-líp-pin?",
+     "options": ["A. Đi-pô-nê-gô-rô", "B. Ca-vi-tô", "C. Bô-ni-pha-xi-ô", "D. Đa-ga-hô"],
+     "answer": "D"},
+    {"question": "Câu 5. Từ nửa sau thế kỉ XIX, các nước Đông Dương trở thành thuộc địa của nước thực dân nào sau đây?",
+     "options": ["A. Anh", "B. Pháp", "C. Hà Lan", "D. Tây Ban Nha"],
+     "answer": "B"},
+    {"question": "Câu 6. Thế kỉ XIX, nhân dân Miến Điện đấu tranh chống thực dân Anh với hình thức chủ yếu nào sau đây?",
+     "options": ["A. Bất hợp tác", "B. Chiến tranh du kích", "C. Đấu tranh đòi quyền tự trị", "D. Thỏa hiệp với chính quyền thực dân"],
+     "answer": "B"},
+    {"question": "Câu 7. Năm 1858, Pháp tiến hành xâm lược Việt Nam bằng kế hoạch chiến tranh nào sau đây?",
+     "options": ["A. 'Đánh nhanh, thắng nhanh'", "B. 'Chinh phục từng gói nhỏ'", "C. 'Tràn ngập lãnh thổ'", "D. 'Chiến tranh tổng lực'"],
+     "answer": "A"},
+    {"question": "Câu 8. Cuộc khởi nghĩa của nhân dân Campuchia chống thực dân Pháp trong những năm 1863-1866 do ai lãnh đạo?",
+     "options": ["A. Pu-côm-bô", "B. A-cha Xoa", "C. Com-ma-đam", "D. Si-vô-tha"],
+     "answer": "B"},
+    {"question": "Câu 9. Cuối thế kỉ XIX, ở Đông Nam Á phong trào đấu tranh theo ý thức hệ phong kiến dần được thay thế bằng phong trào đấu tranh theo xu hướng nào sau đây?",
+     "options": ["A. Vô sản", "B. Tư sản", "C. Li khai", "D. Cực đoan"],
+     "answer": "B"},
+    {"question": "Câu 10. Sau Chiến tranh thế giới thứ nhất, tại Đông Nam Á, Đảng Cộng sản nước nào được thành lập sớm nhất?",
+     "options": ["A. Việt Nam", "B. Mã Lai", "C. Phi-líp-pin", "D. In-đô-nê-xi-a"],
+     "answer": "D"},
+    {"question": "Câu 11. Trong năm 1930, ở Đông Nam Á, Các Đảng Cộng sản đã ra đời ở những quốc gia nào sau đây?",
+     "options": ["A. Việt Nam, Mã Lai, Xiêm và Phi-líp-pin", "B. Việt Nam, Mã Lai, Xiêm và In-đô-nê-xi-a", "C. Việt Nam, Mã Lai, Xiêm và Xin-ga-po", "D. Việt Nam, Mã Lai, Xiêm và Miến Điện"],
+     "answer": "A"},
+    {"question": "Câu 12. Nét mới của phong trào độc lập dân tộc ở Đông Nam Á sau Chiến tranh thế giới thứ nhất là gì?",
+     "options": ["A. Sự lãnh đạo cách mạng của giai cấp tư sản dân tộc", "B. Sự liên minh giữa các đảng tư sản với đảng cộng sản", "C. Sự ra đời và lãnh đạo cách mạng của các đảng cộng sản", "D. Sự liên minh giữa giai cấp tư sản với giai cấp vô sản"],
+     "answer": "C"},
+    {"question": "Câu 13. Trong những năm 1930-1951, cách mạng Đông Dương đặt dưới sự lãnh đạo của",
+     "options": ["A. Đảng cộng sản Việt Nam", "B. Đảng Lao động Việt Nam", "C. Đảng cộng sản Đông Dương", "D. Đảng Nhân dân cách mạng Lào"],
+     "answer": "C"},
+    {"question": "Câu 14. Năm 1945, quốc gia giành độc lập sớm nhất ở Đông Nam Á là",
+     "options": ["A. Inđônêxia", "B. Lào", "C. Campuchia", "D. Việt Nam"],
+     "answer": "A"},
+    {"question": "Câu 15. Năm 1945, những quốc gia nào ở Đông Nam Á tuyên bố độc lập?",
+     "options": ["A. In-đô-nê-xi-a, Việt Nam, Lào", "B. In-đô-nê-xi-a, Việt Nam, Cam-pu-chia", "C. In-đô-nê-xi-a, Việt Nam, Phi-lip-pin", "D. In-đô-nê-xi-a, Việt Nam, Ma-lai-xi-a"],
+     "answer": "A"},
+    {"question": "Câu 16. Trong giai đoạn 1954-1975, nhân dân ba nước Đông Dương đấu tranh chống kẻ thù chung là",
+     "options": ["A. thực dân Pháp", "B. đế quốc Mĩ", "C. thực dân Anh", "D. thực dân Hà Lan"],
+     "answer": "B"},
+    {"question": "Câu 17. Sau Chiến tranh thế giới thứ hai, những quốc gia nào ở Đông Nam Á giành và tuyên bố độc lập dưới sự lãnh đạo của Đảng Cộng sản?",
+     "options": ["A. Việt Nam và Lào", "B. Lào và Inđônêxia", "C. Việt Nam, Lào và Inđônêxia", "D. Mianma, Việt Nam, Malaixia"],
+     "answer": "A"},
+    {"question": "Câu 18. Trước khi giành độc lập, Xin-ga-po là thuộc địa của nước nào sau đây?",
+     "options": ["A. Mĩ", "B. Hà Lan", "C. Pháp", "D. Anh"],
+     "answer": "D"},
+    {"question": "Câu 19. Tác phẩm 'Bản án chế độ thực dân Pháp' của Nguyễn Ái Quốc đã được viết và xuất bản đầu tiên tại",
+     "options": ["A. Việt Nam", "B. Liên Xô", "C. Anh", "D. Pháp"],
+     "answer": "D"},
+    {"question": "Câu 20. Trước chiến tranh thế giới thứ hai (1939-1945), các nước Việt Nam, Lào, Campuchia đều là thuộc địa của",
+     "options": ["A. Pháp", "B. Mĩ", "C. Anh", "D. Hà Lan"],
+     "answer": "A"},
+    {"question": "Câu 21. Tác phẩm 'Bản án chế độ thực dân Pháp' của Nguyễn Ái Quốc, làm rõ mối quan hệ mật thiết giữa cách mạng thuộc địa với cách mạng vô sản ở chính quốc, khẳng định cách mạng thuộc địa là",
+     "options": ["A. một bộ phận quan trọng không thể thiếu của thế giới", "B. một phân liệt hoạt động riêng biệt trên phạm vi toàn cầu", "C. một bộ phận không thể tách rời của cách mạng vô sản thế giới", "D. một bộ phận nhưng hoạt động song song với vô sản thế giới"],
+     "answer": "C"},
+    {"question": "Câu 22. 'Những gì mà người Xin-ga-po cần là sự trợ giúp tạo công ăn việc làm cho người lao động thông qua các ngành công nghiệp sản xuất chứ không phải là sự lệ thuộc vào những chuyến viện trợ liên tục...' là phát biểu của",
+     "options": ["A. Lý Tiểu Long", "B. Lý Quang Khiết", "C. Lý Quang Diệu", "D. Lý Quân Nhuệ"],
+     "answer": "C"},
+    {"question": "Câu 23. Sau chiến tranh thế giới thứ hai, một số nước Đông Nam Á bắt đầu quá trình tái thiết đất nước nhằm mục đích nào sau đây?",
+     "options": ["A. Khắc phục hậu quả chiến tranh và các tàn dư của thời kì thuộc địa", "B. Liên minh với các nước phương Tây để tranh thủ viện trợ", "C. Nỗ lực trở thành ủy viên thường trực của Hội đồng bảo an", "D. Đưa đất nước phát triển thành các cường quốc quan sự hàng đầu"],
+     "answer": "A"},
+    {"question": "Câu 24. Thời kì đầu sau khi độc lập, nhóm các nước sáng lập ASEAN đã thực hiện chính sách phát triển nào sau đây?",
+     "options": ["A. Công nghiệp hóa thay thế nhập khẩu", "B. Công nghiệp hóa hướng tới xuất khẩu", "C. Công nghiệp hóa xã hội chủ nghĩa", "D. Cải cách và mở cửa"],
+     "answer": "A"},
+    {"question": "Câu 25. Sau khi tuyên bố độc lập (1984), Brunây đặc biệt chú trọng phát triển ngành kinh tế nào sau đây?",
+     "options": ["A. Chế biến dầu mỏ", "B. Nông nghiệp", "C. Điện hạt nhân", "D. Công nghiệp vũ trụ"],
+     "answer": "A"},
+    {"question": "Câu 26. Trong những năm 70 của thế kỉ XX, nhóm 5 nước sáng lập ASEAN đã thực hiện chính sách kinh tế nào sau đây?",
+     "options": ["A. Công nghiệp hóa hướng tới xuất khẩu", "B. Chiến lược kinh tế hướng nội", "C. Xây dựng kinh tế thị trường định hướng xã hội chủ nghĩa", "D. Chính sách láng giềng thân thiện"],
+     "answer": "A"},
+    {"question": "Câu 27. Tháng 12-1986, Đảng cộng sản Việt Nam đã quyết định thực hiện",
+     "options": ["A. đường lối đổi mới", "B. xây dựng nền kinh tế tập trung", "C. trưng thu lương thực thừa", "D. chính sách bế quan tỏa cảng"],
+     "answer": "A"},
+    {"question": "Câu 28. Cuộc khởi nghĩa nào nổi bật trong phong trào đấu tranh của nhân dân In-đô-nê-xi-a chống thực dân Hà Lan?",
+     "options": ["A. Pu-côm-bô", "B. Ca-vi-tô", "C. Đi-pô-nê-gô-rô", "D. Si-vô-tha"],
+     "answer": "C"},
+    {"question": "Câu 29. Thực dân Pháp phải mất 26 năm (1858-1884) mới đặt được ách đô hộ trên toàn bộ đất nước Việt Nam vì lí do nào sau đây?",
+     "options": ["A. Do vấp phải cuộc kháng chiến chống Pháp của nhân dân Việt Nam", "B. Do thực dân Pháp chưa có tiềm lực kinh tế, quân sự mạnh", "C. Do Pháp phải tập trung xâm lược các nước Đông Nam Á khác trước", "D. Do điều kiện tự nhiên của Việt Nam gây khó khăn cho quá trình xâm lược"],
+     "answer": "A"},
+    {"question": "Câu 30. Cuối thế kỉ XIX, cuộc khởi nghĩa nào sau đây mở đầu cho phong trào đấu tranh chống Pháp của nhân dân Campuchia?",
+     "options": ["A. Khởi nghĩa của Hoàng thân Si-vô-tha", "B. Khởi nghĩa của A-cha Xoa", "C. Khởi nghĩa của Pu-côm-bô", "D. Khởi nghĩa của Pha-ca-đuốc"],
+     "answer": "A"},
+    {"question": "Câu 31. Trước Chiến tranh thế giới thứ hai, phong trào đấu tranh chống thực dân xâm lược ở các nước Đông Nam Á",
+     "options": ["A. chưa giành được thắng lợi", "B. giành được thắng lợi ở một số nước", "C. giành được thắng lợi ở tất cả các nước", "D. giành thắng lợi ở 3 nước Đông Dương"],
+     "answer": "A"},
+    {"question": "Câu 32. Lực lượng nghĩa quân nào ở Việt Nam đã liên kết với nghĩa quân của Pu-côm-bô ở Campuchia trong những năm 1866 - 1867?",
+     "options": ["A. Trương Định, Trương Quyền", "B. Trương Định, Võ Duy Dương", "C. Trương Quyền, Võ Duy Dương", "D. Trương Định, Nguyễn Hữu Huân"],
+     "answer": "C"},
+    {"question": "Câu 33. Từ cuối thế kỉ XIX, cuộc đấu tranh của nhân dân các nước Đông Nam Á có mục tiêu nào sau đây?",
+     "options": ["A. Đấu tranh chống chế độ phân biệt chủng tộc", "B. Cạnh tranh với kinh tế với các nước thực dân", "C. Đấu tranh tham gia các tổ chức quốc tế", "D. Đấu tranh nhằm giành độc lập dân tộc"],
+     "answer": "D"},
+    {"question": "Câu 34. Cuối thế kỉ XIX, cuộc đấu tranh nào của quốc gia nào sau đây ở Đông Nam Á diễn ra theo xu hướng tư sản?",
+     "options": ["A. Khởi nghĩa chống thực dân Tây Ban Nha của nhân dân Phi-lip-pin (1896)", "B. Cuộc khởi nghĩa chống thực dân Pháp của Hoàng thân Si-vô-tha (1861-1892)", "C. Phong trào Cần vương chống thực dân Pháp của nhân dân Việt Nam (1885-1896)", "D. Khởi nghĩa nông dân Yên Thế chống thực dân Pháp (1884-1913)"],
+     "answer": "A"},
+    {"question": "Câu 35. Nội dung nào sau đây là biến đổi đầu tiên của các nước Đông Nam Á sau Chiến tranh thế giới thứ hai là gì?",
+     "options": ["A. Từ chỗ chưa có địa vị quốc tế, trở thành khu vực được quốc tế coi trọng", "B. Hợp tác quốc tế vẫn luôn được duy trì và mở rộng qua tổ chức ASEAN", "C. Từ những nước nghèo nàn, trở thành quốc gia có nền kinh tế phát triển", "D. Từ thân phận là nước nô lệ, lần lượt trở thành quốc gia độc lập, tự chủ"],
+     "answer": "D"},
+    {"question": "Câu 36. Mục tiêu hàng đầu trong các phong trào đấu tranh của khu vực Đông Nam Á sau Chiến tranh thế giới thứ hai là gì?",
+     "options": ["A. Độc lập dân tộc", "B. Đòi tự do trong kinh doanh", "C. Cải cách dân chủ", "D. Đòi quyền tự quyết dân tộc"],
+     "answer": "A"},
+    {"question": "Câu 37. Mọi biến đổi của các nước trong khu vực Đông Nam Á sau Chiến tranh thế giới thứ hai đều khởi đầu từ",
+     "options": ["A. khi trở thành các quốc gia độc lập, tự chủ", "B. sự phát triển kinh tế, xã hội và đối ngoại", "C. công cuộc khôi phục, phát triển đất nước", "D. cuộc cách mạng khoa học và công nghệ"],
+     "answer": "A"},
+    {"question": "Câu 38. Trong thời gian thế kỉ XIX-đầu thế kỉ XX, nội dung nào sau đây là nguyên nhân sâu xa dẫn đến sự chia rẽ sâu sắc giữa các cộng đồng dân cư ở các nước Đông Nam Á?",
+     "options": ["A. Chính sách 'chia để trị'", "B. Chính sách 'ngu dân'", "C. Chính sách 'Kinh tế chỉ huy'", "D. Chính sách 'Cướp ruộng'"],
+     "answer": "A"},
+    {"question": "Câu 39. Trong thời gian thế kỉ XIX-đầu thế kỉ XX, chủ nghĩa thực dân thực hiện chính sách 'chia để trị' ở Đông Nam Á, nhằm mục đích gì?",
+     "options": ["A. Khai sáng nền văn minh cho khu vực Đông Nam Á", "B. Vơ vét nguồn tài nguyên thiên nhiên của khu vực", "C. Xóa bỏ nền văn minh bản địa của Đông Nam Á", "D. Nắm quyền cai trị trực tiếp đến các địa phương"],
+     "answer": "D"},
+    {"question": "Câu 40. Trong thời gian thế kỉ XIX-đầu thế kỉ XX, chính sách nô dịch, áp đặt văn hóa ngoại lai của chủ nghĩa thực dân đã ảnh hưởng gì đến các nước Đông Nam Á?",
+     "options": ["A. Ảnh hưởng tiêu cực đến việc bảo vệ và phát huy những giá trị truyền thống", "B. Ảnh hưởng tích cực đến việc gìn giữ và phát huy giá trị cốt lõi của khu vực", "C. Khu vực Đông Nam Á tiếp cận đến những nền văn hóa mới, tiên tiến hơn", "D. Văn hóa ngoại lai đan xen văn hóa bản địa tạo nền văn hóa mới cho khu vực"],
+     "answer": "A"},
+    {"question": "Câu 41. Trong thời gian thế kỉ XIX-đầu thế kỉ XX, vì sao một số nước Đông Nam Á được coi là 'vựa lúa' của thế giới nhưng vẫn rơi vào tình trạng thiếu lương thực, đói kém triền miên?",
+     "options": ["A. Đa số các nước Đông Nam Á có nền nông nghiệp lạc hậu, lệ thuộc nước ngoài", "B. Các nước Đông Nam Á chỉ chú trọng chất lượng không đầu tư vào sản lượng", "C. Các nước Đông Nam Á không thực hiện liên minh kinh tế với các nước tư bản", "D. Có sự cạnh tranh khốc liệt của các thương nhân nước ngoài ở Đông Nam Á"],
+     "answer": "A"},
+    {"question": "Câu 42. Một trong những nhiệm vụ đặt ra cho các nước Đông Nam Á sau khi giành độc lập là",
+     "options": ["A. tái thiết đất nước, khắc phục hậu quả chiến tranh", "B. tăng cường sự liên kết giữa các nước tư bản chủ nghĩa", "C. liên minh quân sự chống lại tất cả các nước xã hội chủ nghĩa", "D. nhanh chóng vươn lên phát triển kinh tế đứng đầu thế giới"],
+     "answer": "A"},
+    {"question": "Câu 43. Thời gian đầu sau khi giành độc lập, một trong những nội dung của chính sách công nghiệp hóa thay thế nhập khẩu được nhóm 5 nước sáng lập ASEAN thực hiện là",
+     "options": ["A. sản xuất hàng tiêu dùng để đáp ứng nhu cầu trong nước", "B. tập trung sản xuất hàng hóa để xuất khẩu", "C. tăng cường mậu dịch đối ngoại", "D. thu hút nguồn vốn đầu tư nước ngoài"],
+     "answer": "A"},
+    {"question": "Câu 44. Trong quá trình thực hiện chiến lược công nghiệp hóa hướng tới xuất khẩu, nhóm 5 nước sáng lập ASEAN đều",
+     "options": ["A. có mậu dịch đối ngoại tăng trưởng mạnh", "B. trở thành những con rồng kinh tế châu Á", "C. trở thành những nước công nghiệp mới", "D. dẫn đầu thế giới về xuất khẩu gạo"],
+     "answer": "A"},
+    {"question": "Câu 45. Bước sang thế kỉ XXI, một trong những khó khăn, thách thức đặt ra cho Ti-mo Lét-xtê trong quá trình phát triển đất nước là",
+     "options": ["A. xung đột phe nhóm và đảo chính quân sự", "B. các nước trong khu vực tiến hành bao vây", "C. tỉ lệ người dân không biết chữ cao nhất thế giới", "D. các nước thực hiện chính sách cấm vận"],
+     "answer": "A"},
+    {"question": "Câu 46. Đặc điểm quá trình xâm lược của các nước đế quốc ở khu vực Đông Nam Á là gì?",
+     "options": ["A. Diễn ra nhanh, dồn dập, nhưng chưa đạt kết quả", "B. Các nước chỉ thực hiện xâm lược bằng kinh tế", "C. Kéo dài liên tục từ thế kỉ XVI đến hết thế kỉ XIX", "D. Các nước chỉ thực hiện xâm lược bằng quân sự"],
+     "answer": "C"},
+    {"question": "Câu 47. Thắng lợi của nhân dân ba nước Đông Dương trong cuộc kháng chiến chống Mĩ (1954 - 1975) đã",
+     "options": ["A. góp phần giải trừ chủ nghĩa thực dân trên thế giới", "B. xóa bỏ trật tự 'hai cực', 'hai phe' sau nhiều thập kỉ", "C. bảo vệ vững chắc thành quả Cách mạng tháng Tám (1945)", "D. chấm dứt sự thống trị của chủ nghĩa thực dân trên thế giới"],
+     "answer": "A"},
+    {"question": "Câu 48. Nội dung nào sau đây phản ánh không đúng về chính sách công nghiệp hóa được nhóm 5 nước sáng lập ASEAN thực hiện trong những năm 60 của thế kỉ XX?",
+     "options": ["A. Tận dụng tốt nguồn vốn và công nghệ nước ngoài", "B. Đẩy mạnh xuất khẩu, phát triển ngoại thương", "C. Mở cửa kinh tế, thu hút vốn đầu tư nước ngoài", "D. Từng bước giải quyết các vấn đề sắc tộc, tôn giáo"],
+     "answer": "D"},
+    {"question": "Câu 49. Cuộc khởi nghĩa nào được xem là biểu tượng về liên minh chiến đấu của nhân dân hai nước Việt Nam và Campuchia?",
+     "options": ["A. Khởi nghĩa A-cha Xoa", "B. Khởi nghĩa Pha-ca-đuốc", "C. Khởi nghĩa Pu-côm-bô", "D. Khởi nghĩa Si-vô-tha"],
+     "answer": "C"},
+    {"question": "Câu 50. Đâu là nhận xét đúng về hệ quả của chính sách nô dịch về văn hóa của thực dân phương Tây đối với nền chính trị Đông Nam Á?",
+     "options": ["A. Để lại những hậu quả nặng nề và lâu dài cho nhân dân các nước Đông Nam Á", "B. Nhiều trường học được xây dựng đã khai hóa văn minh cho Đông Nam Á", "C. Nhân dân Đông Nam Á tích cực hưởng ứng chính sách văn hóa của các nước thực dân", "D. Các nước Đông Nam Á bị lệ thuộc hoàn toàn vào các nước thực dân phương Tây"],
+     "answer": "A"},
+]
+
+# Hàm chạy bài kiểm tra
+def run_quiz():
+    score = 0
+    total_questions = len(questions)
+    
+    # Xáo trộn câu hỏi (tuỳ chọn)
+    random.shuffle(questions)
+    
+    print("Chào mừng bạn đến với bài kiểm tra trắc nghiệm!")
+    print("Hãy chọn đáp án đúng bằng cách nhập A, B, C hoặc D.")
+    print("---------------------------------------------\n")
+    
+    for i, q in enumerate(questions):
+        print(f"{q['question']}")
+        for option in q['options']:
+            print(option)
+        
+        # Nhập đáp án từ người dùng
+        while True:
+            user_answer = input("Đáp án của bạn: ").strip().upper()
+            if user_answer in ['A', 'B', 'C', 'D']:
+                break
+            print("Vui lòng chỉ nhập A, B, C hoặc D!")
+        
+        # Kiểm tra đáp án
+        if user_answer == q['answer']:
+            print("Đúng!")
+            score += 1
+        else:
+            print(f"Sai! Đáp án đúng là: {q['answer']}")
+        print("---------------------------------------------\n")
+    
+    # Hiển thị kết quả
+    percentage = (score / total_questions) * 100
+    print(f"Bạn đã hoàn thành bài kiểm tra!")
+    print(f"Điểm số: {score}/{total_questions} ({percentage:.2f}%)")
+
+# Chạy chương trình
+if __name__ == "__main__":
+    run_quiz()
