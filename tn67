@@ -4,9 +4,9 @@ import requests
 def load_script(choice):
     # Xác định URL dựa trên lựa chọn
     if choice == "6":
-        url = "https://raw.githubusercontent.com/baobao247/tnls/refs/heads/main/b6"
+        url = "https://raw.githubusercontent.com/baobao247/tnls/main/b6"
     elif choice == "7":
-        url = "https://raw.githubusercontent.com/baobao247/tnls/refs/heads/main/b7"
+        url = "https://raw.githubusercontent.com/baobao247/tnls/main/b7"
     else:
         print("Vui lòng chỉ nhập 6 hoặc 7!")
         return
