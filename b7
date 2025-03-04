@@ -183,5 +183,20 @@ def run_quiz():
             if user_answer in ['A', 'B', 'C', 'D']:
                 break
             print("Vui lòng chỉ nhập A, B, C hoặc D!")
-        
+        # Kiểm tra đáp án
+        if user_answer == q['answer']:
+            print("Đúng!")
+            score += 1
+        else:
+            print(f"Sai! Đáp án đúng là: {q['answer']}")
+        print("---------------------------------------------\n")
+    
+    # Hiển thị kết quả
+    percentage = (score / total_questions) * 100
+    print(f"Bạn đã hoàn thành bài kiểm tra!")
+    print(f"Điểm số: {score}/{total_questions} ({percentage:.2f}%)")
+
+# Chạy chương trình
+if __name__ == "__main__":
+    run_quiz()
       
