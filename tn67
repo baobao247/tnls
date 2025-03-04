@@ -1,0 +1,33 @@
+import requests
+
+# Hàm để tải và thực thi script
+def load_script(choice):
+    # Xác định URL dựa trên lựa chọn
+    if choice == "6":
+        url = "https://raw.githubusercontent.com/baobao247/tnls/refs/heads/main/b6"
+    elif choice == "7":
+        url = "https://raw.githubusercontent.com/baobao247/tnls/refs/heads/main/b7"
+    else:
+        print("Vui lòng chỉ nhập 6 hoặc 7!")
+        return
+    
+    try:
+        # Tải nội dung script
+        response = requests.get(url)
+        script_content = response.text
+        
+        # Thực thi script
+        exec(script_content)
+        print(f"Đã tải và thực thi bài {choice} thành công!")
+        
+    except Exception as e:
+        print(f"Có lỗi xảy ra: {str(e)}")
+
+# Hiển thị menu lựa chọn
+print("Chọn bài học:")
+print("6: HÀNH TRÌNH ĐI ĐẾN ĐỘC LẬP DÂN TỘC Ở ĐÔNG NAM Á")
+print("7: CHIẾN TRANH BẢO VỆ TỔ QUỐC TRONG LỊCH SỬ VIỆT NAM")
+
+# Nhập lựa chọn từ người dùng
+choice = input("Nhập 6 hoặc 7: ")
+load_script(choice)
